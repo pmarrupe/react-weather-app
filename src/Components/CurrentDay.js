@@ -1,18 +1,12 @@
 import React from 'react';
 
-class CurrentDay extends React.Component {
-	render() {
-
-		const { city, day:{temp, weather, pressure, humidity, speed, deg} } = this.props;
-		const w = weather[0];
-
-		return (
-			<div class = "current-day"> 
+const CurrentDay = ({ city, day:{temp, weather, pressure, humidity, speed, deg} }) => 
+	<div class = "current-day"> 
 				<h1 className="day-header">{city.name}</h1>
 				<div className="weather"> 
 					<p> 
-						<img src={`http://openweathermap.org/img/w/${w.icon}.png`} alt={w.description}/>
-						{w.description}
+						<img src={`http://openweathermap.org/img/w/${weather[0].icon}.png`} alt={weather[0].description}/>
+						{weather[0].description}
 					</p>
 				</div>
 				<div className="details flex-parent"> 
@@ -28,11 +22,6 @@ class CurrentDay extends React.Component {
 						<p>Wind Speed : {speed} mph </p>
 					</div>
 				</div>
-			</div>
-
-			);
-
-	}
-}
+	</div>
 
 export default CurrentDay;
